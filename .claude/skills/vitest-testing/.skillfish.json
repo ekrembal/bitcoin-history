@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "vitest-testing",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/vitest-testing",
+  "branch": "main",
+  "sha": "a5d8dd72bdde88c2c9adaa0a0e3f8f818561e983",
+  "source": "manual"
+}

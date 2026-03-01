@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "shadcn-ui",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/shadcn-ui",
+  "branch": "main",
+  "sha": "1d35579411039a3b8adcef24b1c30501ba066ccf",
+  "source": "manual"
+}

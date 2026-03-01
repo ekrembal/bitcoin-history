@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "tailwind-v4",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/tailwind-v4",
+  "branch": "main",
+  "sha": "070c84ae729ce9b0e394262d954ccd2feab8012b",
+  "source": "manual"
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "dagre-react-flow",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/dagre-react-flow",
+  "branch": "main",
+  "sha": "2936c9508b37feeefd846e82e97f08a41be5bb78",
+  "source": "manual"
+}

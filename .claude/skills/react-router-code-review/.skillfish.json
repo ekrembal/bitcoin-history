@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "react-router-code-review",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/react-router-code-review",
+  "branch": "main",
+  "sha": "c917e47001c6983545e4954a74610cfcba0fb389",
+  "source": "manual"
+}

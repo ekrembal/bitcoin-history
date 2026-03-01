@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "review-verification-protocol",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/review-verification-protocol",
+  "branch": "main",
+  "sha": "6c1ad44438499837e8be7182453805513874b703",
+  "source": "manual"
+}

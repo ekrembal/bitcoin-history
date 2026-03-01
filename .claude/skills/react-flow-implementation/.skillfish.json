@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "react-flow-implementation",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/react-flow-implementation",
+  "branch": "main",
+  "sha": "a8ff2ba9155f6268faa2f6cc848821ee65eaca3a",
+  "source": "manual"
+}

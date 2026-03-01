@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# Claude Code local config and temporary data
+.claude/settings.local.json
+.claude/plans/
+.claude/logs/
+.claude/cache/
+.claude/todos/

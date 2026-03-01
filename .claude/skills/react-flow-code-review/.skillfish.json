@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "react-flow-code-review",
+  "owner": "existential-birds",
+  "repo": "beagle",
+  "path": "plugins/beagle-react/skills/react-flow-code-review",
+  "branch": "main",
+  "sha": "87c021209f4d44ed7d77a352524d84c796e9eae2",
+  "source": "manual"
+}
