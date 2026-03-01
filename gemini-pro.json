@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "title": "Bitcoin Technical History",
+  "description": "A comprehensive timeline of Bitcoin's consensus changes, research breakthroughs, and proposed upgrades.",
+  "author": "Gemini 3.1 Pro",
+  "generatedAt": "2026-03-01",
+  "nodes": [
+    {
+      "id": "genesis",
+      "category": "genesis",
+      "label": "Bitcoin Whitepaper",
+      "year": "2008",
+      "date": "Oct 31, 2008",
+      "status": "deployed",
+      "shortInfo": "The founding document of Bitcoin",
+      "authors": ["Satoshi Nakamoto"],
+      "subtitle": "Satoshi Nakamoto · October 31, 2008",
+      "description": "The publication of the Bitcoin whitepaper to a cryptography mailing list, describing a peer-to-peer electronic cash system.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Satoshi Nakamoto solved the double-spending problem using a decentralized peer-to-peer network and a proof-of-work consensus mechanism, laying the groundwork for the first successful decentralized cryptocurrency.",
+          "type": "text"
+        },
+        {
+          "heading": "Core Concepts",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Proof-of-Work (PoW)",
+            "Peer-to-peer network",
+            "Cryptographic signatures",
+            "Decentralized timestamp server"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "Whitepaper PDF",
+          "url": "[https://bitcoin.org/bitcoin.pdf](https://bitcoin.org/bitcoin.pdf)"
+        }
+      ]
+    },
+    {
+      "id": "sf-p2sh",
+      "category": "softfork",
+      "label": "P2SH",
+      "year": "2012",
+      "date": "Apr 1, 2012",
+      "status": "deployed",
+      "shortInfo": "Pay to Script Hash",
+      "authors": ["Gavin Andresen"],
+      "bips": [16],
+      "subtitle": "BIP 16 · April 1, 2012",
+      "description": "Allowed transactions to be sent to a script hash (address starting with '3') instead of directly to a public key or standard script.",
+      "sections": [
+        {
+          "heading": "Key Innovations",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Moved the burden of providing the conditions to redeem coins to the receiver",
+            "Enabled standard multi-signature addresses",
+            "Allowed complex scripts without bloating the UTXO set until spent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-bip34",
+      "category": "softfork",
+      "label": "BIP 34",
+      "year": "2013",
+      "date": "Mar 24, 2013",
+      "status": "deployed",
+      "shortInfo": "Block Height in Coinbase",
+      "authors": ["Gavin Andresen"],
+      "bips": [34],
+      "subtitle": "BIP 34 · March 24, 2013",
+      "description": "Required blocks to include their block height in the coinbase transaction.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Before BIP 34, it was possible to create identical coinbase transactions for different blocks, leading to the risk of duplicated transaction IDs (txids). By mandating the block height inside the coinbase, every coinbase transaction became globally unique.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "sf-bip66",
+      "category": "softfork",
+      "label": "BIP 66",
+      "year": "2015",
+      "date": "Jul 4, 2015",
+      "status": "deployed",
+      "shortInfo": "Strict DER Signatures",
+      "authors": ["Pieter Wuille"],
+      "bips": [66],
+      "subtitle": "BIP 66 · July 4, 2015",
+      "description": "Required ECDSA signatures to follow strict Distinguished Encoding Rules (DER).",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Restricted OpenSSL's liberal parsing of signatures to a strict standard, reducing a vector for transaction malleability.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "sf-cltv",
+      "category": "softfork",
+      "label": "CLTV",
+      "year": "2015",
+      "date": "Dec 15, 2015",
+      "status": "deployed",
+      "shortInfo": "OP_CHECKLOCKTIMEVERIFY",
+      "authors": ["Peter Todd"],
+      "bips": [65],
+      "subtitle": "BIP 65 · December 15, 2015",
+      "description": "Introduced an absolute timelock at the script level.",
+      "sections": [
+        {
+          "heading": "Key Innovations",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Allowed outputs to be locked until a specific block height or UNIX timestamp",
+            "Crucial building block for payment channels and the Lightning Network",
+            "Enabled atomic cross-chain swaps"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-csv",
+      "category": "softfork",
+      "label": "CSV",
+      "year": "2016",
+      "date": "Jul 4, 2016",
+      "status": "deployed",
+      "shortInfo": "OP_CHECKSEQUENCEVERIFY",
+      "authors": ["BtcDrak", "Mark Friedenbach", "Eric Lombrozo"],
+      "bips": [68, 112, 113],
+      "subtitle": "BIP 112 · July 4, 2016",
+      "description": "Introduced a relative timelock at the script level.",
+      "sections": [
+        {
+          "heading": "Key Innovations",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Allowed outputs to be locked for a specific amount of time AFTER they are confirmed",
+            "Made Lightning Network channels capable of remaining open indefinitely",
+            "Enhanced bi-directional payment channels"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-segwit",
+      "category": "softfork",
+      "label": "SegWit",
+      "year": "2017",
+      "date": "Aug 24, 2017",
+      "status": "deployed",
+      "shortInfo": "Witness data separation",
+      "authors": ["Pieter Wuille", "Eric Lombrozo", "Johnson Lau"],
+      "bips": [141, 143, 144],
+      "subtitle": "Pieter Wuille et al. · August 24, 2017",
+      "description": "Segregated Witness (SegWit) fundamentally changed how transaction data is structured by separating the unlocking signatures (witness) from the transaction data.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "By moving signature data to an appended structure, SegWit effectively increased the block size limit without a hard fork and fixed third-party transaction malleability.",
+          "type": "text"
+        },
+        {
+          "heading": "Key Innovations",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Eliminated third-party transaction malleability",
+            "Introduced block weight (up to 4 million weight units)",
+            "Enabled easier integration of layer-2 solutions like Lightning Network",
+            "Paved the way for future script upgrades via script versioning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bt-lightning",
+      "category": "breakthrough",
+      "label": "Lightning Network",
+      "year": "2018",
+      "status": "deployed",
+      "shortInfo": "Layer-2 payment channels",
+      "authors": ["Joseph Poon", "Thaddeus Dryja"],
+      "description": "A decentralized network using smart contract functionality in the blockchain to enable instant payments across a network of participants.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "The Lightning Network allows participants to open payment channels with each other, transacting instantly and with near-zero fees by keeping the majority of transactions off-chain, settling on the Bitcoin blockchain only when necessary.",
+          "type": "text"
+        },
+        {
+          "heading": "Dependencies",
+          "content": "Lightning relies heavily on CLTV and CSV for its channel mechanics, and SegWit to fix transaction malleability which previously made channels unstable.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "bt-schnorr",
+      "category": "breakthrough",
+      "label": "Schnorr Signatures",
+      "year": "2018",
+      "status": "deployed",
+      "shortInfo": "Linear signature scheme",
+      "authors": ["Pieter Wuille"],
+      "bips": [340],
+      "description": "An elegant signature scheme offering linearity, making multisig look like a single signature.",
+      "sections": [
+        {
+          "heading": "Key Innovations",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Signature aggregation (Key Aggregation)",
+            "Smaller signature sizes",
+            "Enhanced privacy for multi-signature setups (MuSig)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bt-dlc",
+      "category": "breakthrough",
+      "label": "DLCs",
+      "year": "2018",
+      "status": "experimental",
+      "shortInfo": "Discreet Log Contracts",
+      "authors": ["Thaddeus Dryja"],
+      "description": "A system for creating private, scalable smart contracts on Bitcoin based on oracle attestations.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "DLCs allow two parties to create a smart contract on Bitcoin that resolves based on the signature of an external oracle, without the blockchain or the oracle knowing the details of the contract.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "sf-taproot",
+      "category": "softfork",
+      "label": "Taproot",
+      "year": "2021",
+      "date": "Nov 14, 2021",
+      "status": "deployed",
+      "shortInfo": "Schnorr + MAST",
+      "authors": ["Pieter Wuille", "Tim Ruffing", "A.J. Townes", "Jonas Nick"],
+      "bips": [340, 341, 342],
+      "subtitle": "BIP 341 · November 14, 2021",
+      "description": "A major upgrade integrating Schnorr signatures and Merklized Alternative Script Trees (MAST) to improve privacy, efficiency, and smart contract flexibility.",
+      "sections": [
+        {
+          "heading": "Key Innovations",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Schnorr signatures (BIP 340)",
+            "Pay-to-Taproot (P2TR) addresses",
+            "Tapscript (updated scripting language)",
+            "Indistinguishability of complex scripts from standard single-sig spends"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bt-bitvm",
+      "category": "breakthrough",
+      "label": "BitVM",
+      "year": "2023",
+      "date": "Oct 9, 2023",
+      "status": "research",
+      "shortInfo": "Compute anything on Bitcoin",
+      "authors": ["Robin Linus"],
+      "description": "A paradigm to express Turing-complete smart contracts on Bitcoin without changing consensus rules.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "BitVM operates on a verification model similar to Optimistic Rollups. Computations are done off-chain, and only the verification of fraud proofs happens on-chain via a complex challenge-response game utilizing Taproot trees.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "bt-ark",
+      "category": "breakthrough",
+      "label": "Ark",
+      "year": "2023",
+      "date": "May 2023",
+      "status": "research",
+      "shortInfo": "Layer-2 off-chain protocol",
+      "authors": ["Burak"],
+      "description": "A layer-2 protocol offering scalable off-chain payments without requiring users to manage channel liquidity.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Ark relies on an untrusted intermediary (Ark Service Provider) who coordinates transactions into a single on-chain footprint. Users can transact asynchronously, making onboarding easier than Lightning.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "pr-apo",
+      "category": "proposed",
+      "label": "APO",
+      "year": "2019",
+      "status": "proposed",
+      "shortInfo": "SIGHASH_ANYPREVOUT",
+      "authors": ["Christian Decker", "Anthony Towns"],
+      "bips": [118],
+      "description": "A proposed signature hash type that allows a signature to commit to a transaction without specifying exactly which inputs are being spent.",
+      "sections": [
+        {
+          "heading": "Key Benefits",
+          "content": "Crucial for Eltoo, an alternative Lightning Network channel design that dramatically simplifies state management and removes the risk of toxic channel state penalties.",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "pr-ctv",
+      "category": "proposed",
+      "label": "CTV",
+      "year": "2020",
+      "status": "proposed",
+      "shortInfo": "OP_CHECKTEMPLATEVERIFY",
+      "authors": ["Jeremy Rubin"],
+      "bips": [119],
+      "description": "A proposed opcode to introduce basic covenants to Bitcoin.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "CTV allows a transaction to restrict the ways in which its outputs can be spent in the future by committing to a specific hash of the spending transaction's outputs.",
+          "type": "text"
+        },
+        {
+          "heading": "Use Cases",
+          "content": "",
+          "type": "list",
+          "items": [
+            "Congestion control (batching transactions to save fees)",
+            "Vaults (secure cold storage)",
+            "Non-interactive channel opens for Lightning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr-op-cat",
+      "category": "proposed",
+      "label": "OP_CAT",
+      "year": "2023",
+      "status": "proposed",
+      "shortInfo": "Concatenate strings",
+      "authors": ["Ethan Heilman", "Armin Sabouri"],
+      "bips": [347],
+      "description": "A proposal to re-enable OP_CAT, an original Bitcoin opcode removed by Satoshi.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "OP_CAT takes two items from the stack and pushes their concatenation. Combined with Schnorr signatures, it enables powerful covenants and the verification of zero-knowledge proofs directly on Bitcoin.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "genesis",
+      "to": "sf-p2sh",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-p2sh",
+      "to": "sf-bip34",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-bip34",
+      "to": "sf-bip66",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-bip66",
+      "to": "sf-cltv",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-cltv",
+      "to": "sf-csv",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-csv",
+      "to": "sf-segwit",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-segwit",
+      "to": "sf-taproot",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-cltv",
+      "to": "bt-lightning",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-csv",
+      "to": "bt-lightning",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-segwit",
+      "to": "bt-lightning",
+      "relationship": "dependency"
+    },
+    {
+      "from": "bt-schnorr",
+      "to": "sf-taproot",
+      "relationship": "dependency"
+    },
+    {
+      "from": "bt-schnorr",
+      "to": "bt-dlc",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-taproot",
+      "to": "bt-bitvm",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-taproot",
+      "to": "bt-ark",
+      "relationship": "dependency"
+    },
+    {
+      "from": "pr-ctv",
+      "to": "bt-ark",
+      "relationship": "proposed-dependency"
+    },
+    {
+      "from": "pr-op-cat",
+      "to": "bt-ark",
+      "relationship": "proposed-dependency"
+    }
+  ]
+}
