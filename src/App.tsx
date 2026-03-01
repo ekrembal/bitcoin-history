@@ -1,7 +1,7 @@
-import { ComponentExample } from "@/components/component-example";
+import { HistoryBrowser } from "@/components/history-browser";
 
 export function App() {
-return <ComponentExample />;
+  return <HistoryBrowser />;
 }
 
 export default App;
