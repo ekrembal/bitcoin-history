@@ -37,12 +37,11 @@ jobs:
 
       - name: Build
         env:
-          # Base path for GitHub Pages: ekrembal.github.io/bitcoin-history
-          # Also works at ekrembal.com/bitcoin-history with custom domain
-          BASE_PATH: /bitcoin-history/
           CI: true
         run: |
-          pnpm run build
+          # Base path for GitHub Pages: ekrembal.github.io/bitcoin-history
+          # Also works at ekrembal.com/bitcoin-history with custom domain
+          BASE_PATH=/bitcoin-history/ pnpm run build
           # Make client-side routing work on refreshes (if you add React Router later)
           cp dist/index.html dist/404.html || true
 
