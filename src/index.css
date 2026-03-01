@@ -122,8 +122,18 @@
     }
   body {
     @apply font-sans bg-background text-foreground;
-    }
+    overflow: hidden;
+  }
   html {
     @apply font-sans;
-    }
+  }
+}
+
+/* React Flow overrides */
+.react-flow__renderer {
+  background: transparent !important;
+}
+
+.react-flow__edge-path {
+  stroke-linecap: round;
 }
