@@ -1,0 +1,1088 @@
+{
+  "version": 1,
+  "title": "Bitcoin Technical History",
+  "description": "A comprehensive interactive graph of Bitcoin's technical evolution — from the 2008 whitepaper through major soft forks, research breakthroughs, and active proposals. Covers consensus changes, cryptographic innovations, scaling solutions, and covenant research.",
+  "author": "claude-opus-4-6",
+  "generatedAt": "2026-03-01",
+  "nodes": [
+    {
+      "id": "genesis",
+      "category": "genesis",
+      "label": "Bitcoin Whitepaper",
+      "year": "2008",
+      "date": "2008-10-31",
+      "status": "deployed",
+      "shortInfo": "Satoshi Nakamoto publishes 'Bitcoin: A Peer-to-Peer Electronic Cash System'",
+      "authors": ["Satoshi Nakamoto"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "The Bitcoin whitepaper introduced a revolutionary peer-to-peer electronic cash system that eliminates the need for trusted third parties. It combines proof-of-work, a distributed timestamp server, and a UTXO transaction model to achieve decentralized consensus.",
+          "type": "text"
+        },
+        {
+          "heading": "Key Innovations",
+          "content": "The paper solved the double-spending problem without a central authority by introducing a chain of hash-based proof-of-work forming a record that cannot be changed without redoing the work.",
+          "type": "text"
+        },
+        {
+          "heading": "Genesis Block",
+          "content": "The Bitcoin network launched on January 3, 2009, when Satoshi mined the genesis block (block 0) containing the famous Times headline: 'Chancellor on brink of second bailout for banks.'",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Original Whitepaper", "url": "https://bitcoin.org/bitcoin.pdf" },
+        { "label": "Satoshi Nakamoto Institute", "url": "https://nakamotoinstitute.org/" }
+      ]
+    },
+    {
+      "id": "sf-p2sh",
+      "category": "softfork",
+      "label": "P2SH (BIP 16)",
+      "year": "2012",
+      "date": "2012-04-01",
+      "status": "deployed",
+      "shortInfo": "Pay-to-Script-Hash enables compact multi-sig addresses and complex scripts",
+      "authors": ["Gavin Andresen"],
+      "bips": [16],
+      "sections": [
+        {
+          "heading": "What is P2SH?",
+          "content": "Pay-to-Script-Hash (P2SH) allows transactions to be sent to a script hash instead of a public key hash. The redeem script is only revealed when spending, reducing the burden on senders and enabling standardized addresses for complex spending conditions.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact",
+          "content": "P2SH made multi-signature wallets practical by allowing complex scripts to be represented as simple addresses. It shifted the cost of supplying spending conditions from the sender to the redeemer and laid the groundwork for more advanced scripting patterns.",
+          "type": "text"
+        },
+        {
+          "heading": "Activation",
+          "content": "Activated via miner signaling (IsSuperMajority mechanism) on April 1, 2012, at block height 173805. This was one of the earliest soft forks to use miner-signaled activation.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 16", "url": "https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki" }
+      ]
+    },
+    {
+      "id": "sf-cltv",
+      "category": "softfork",
+      "label": "CHECKLOCKTIMEVERIFY (BIP 65)",
+      "year": "2015",
+      "date": "2015-12-14",
+      "status": "deployed",
+      "shortInfo": "OP_CLTV enables absolute time-locked transactions at the script level",
+      "authors": ["Peter Todd"],
+      "bips": [65],
+      "sections": [
+        {
+          "heading": "What is CHECKLOCKTIMEVERIFY?",
+          "content": "OP_CHECKLOCKTIMEVERIFY (CLTV) is a new opcode that allows a transaction output to be made unspendable until a specified block height or Unix timestamp. It repurposes the previously unused OP_NOP2 opcode.",
+          "type": "text"
+        },
+        {
+          "heading": "Use Cases",
+          "content": "CLTV enables trustless payment channels, time-locked escrows, and more sophisticated smart contracts. It is a critical building block for the Lightning Network's Hash Time-Locked Contracts (HTLCs).",
+          "type": "text",
+          "items": ["Payment channels", "Time-locked escrows", "HTLCs for Lightning Network", "Trustless betting protocols"]
+        },
+        {
+          "heading": "Activation",
+          "content": "Activated via BIP 66-style versionbits signaling. Enforcement began at block 388381 in December 2015.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 65", "url": "https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki" }
+      ]
+    },
+    {
+      "id": "sf-csv",
+      "category": "softfork",
+      "label": "CHECKSEQUENCEVERIFY (BIP 112)",
+      "year": "2016",
+      "date": "2016-07-04",
+      "status": "deployed",
+      "shortInfo": "OP_CSV enables relative time-locks, a key building block for Lightning",
+      "authors": ["BtcDrak", "Mark Friedenbach", "Eric Lombrozo"],
+      "bips": [68, 112, 113],
+      "sections": [
+        {
+          "heading": "What is CHECKSEQUENCEVERIFY?",
+          "content": "OP_CHECKSEQUENCEVERIFY (CSV) introduces relative time-locks at the script level, complementing CLTV's absolute time-locks. BIP 68 redefines the nSequence field, BIP 112 adds the OP_CSV opcode, and BIP 113 uses median-time-past for time-lock calculations.",
+          "type": "text"
+        },
+        {
+          "heading": "Why Relative Time-Locks Matter",
+          "content": "Relative time-locks allow outputs to remain unspendable for a defined period after confirmation, regardless of when the transaction was mined. This is essential for bidirectional payment channels where revocation mechanisms need to be enforced after a channel update, not after an absolute time.",
+          "type": "text"
+        },
+        {
+          "heading": "Activation",
+          "content": "Activated as part of a combined soft fork deployment via BIP 9 versionbits signaling on July 4, 2016.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 68", "url": "https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki" },
+        { "label": "BIP 112", "url": "https://github.com/bitcoin/bips/blob/master/bip-0112.mediawiki" },
+        { "label": "BIP 113", "url": "https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki" }
+      ]
+    },
+    {
+      "id": "sf-segwit",
+      "category": "softfork",
+      "label": "Segregated Witness (SegWit)",
+      "year": "2017",
+      "date": "2017-08-24",
+      "status": "deployed",
+      "shortInfo": "Fixes transaction malleability, increases effective block capacity, and enables Lightning Network",
+      "authors": ["Eric Lombrozo", "Johnson Lau", "Pieter Wuille"],
+      "bips": [141, 143, 144, 145],
+      "sections": [
+        {
+          "heading": "What is Segregated Witness?",
+          "content": "Segregated Witness restructures Bitcoin transactions by moving signature (witness) data into a separate structure. This fixes third-party transaction malleability, increases effective block capacity to roughly 2-4 MB via the weight unit system, and introduces a versioning mechanism for future script upgrades.",
+          "type": "text"
+        },
+        {
+          "heading": "Technical Details",
+          "content": "SegWit introduces a new transaction serialization format and a block weight limit of 4 million weight units (replacing the 1 MB block size limit). Witness data receives a 75% discount on weight, incentivizing more efficient UTXO usage. It also introduces witness versioning (v0 for P2WPKH and P2WSH), enabling future script system upgrades via soft fork.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact",
+          "content": "SegWit was the most significant consensus change since P2SH. It resolved the long-standing transaction malleability issue, enabled second-layer protocols like the Lightning Network, and introduced the framework that made Taproot possible via witness version 1.",
+          "type": "text",
+          "items": ["Fixed transaction malleability", "~1.7-2x effective capacity increase", "Enabled Lightning Network", "Introduced witness versioning for future upgrades", "New address formats (bech32)"]
+        },
+        {
+          "heading": "Activation",
+          "content": "Activated via BIP 9 versionbits signaling after intense community debate. Lock-in occurred at block 479707 on August 8, 2017, with enforcement beginning at block 481824 on August 24, 2017.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 141", "url": "https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki" },
+        { "label": "BIP 143", "url": "https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki" },
+        { "label": "BIP 144", "url": "https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki" }
+      ]
+    },
+    {
+      "id": "sf-taproot",
+      "category": "softfork",
+      "label": "Taproot (BIPs 340-342)",
+      "year": "2021",
+      "date": "2021-11-14",
+      "status": "deployed",
+      "shortInfo": "Schnorr signatures, MAST, and Tapscript bring privacy and efficiency to Bitcoin scripts",
+      "authors": ["Pieter Wuille", "Jonas Nick", "Anthony Towns", "Tim Ruffing"],
+      "bips": [340, 341, 342],
+      "sections": [
+        {
+          "heading": "What is Taproot?",
+          "content": "Taproot is a three-part upgrade comprising BIP 340 (Schnorr signatures), BIP 341 (Taproot output structure using MAST), and BIP 342 (Tapscript with upgraded opcodes). Together, they dramatically improve Bitcoin's scripting capabilities, privacy, and efficiency.",
+          "type": "text"
+        },
+        {
+          "heading": "Schnorr Signatures (BIP 340)",
+          "content": "BIP 340 introduces Schnorr signatures to Bitcoin using the secp256k1 curve. Schnorr signatures are provably secure, non-malleable, and support efficient key and signature aggregation. They enable MuSig2 and other multi-party signature protocols that make multi-signature transactions indistinguishable from single-signature ones on-chain.",
+          "type": "text"
+        },
+        {
+          "heading": "Taproot MAST (BIP 341)",
+          "content": "BIP 341 defines a new SegWit v1 output type that commits to both an internal public key and a Merkle tree of script conditions (MAST). In the cooperative case, participants can spend using a single key-path signature, hiding all alternative script paths. Only if the key-path fails does a script-path need to be revealed, and even then only the executed branch is disclosed.",
+          "type": "text"
+        },
+        {
+          "heading": "Tapscript (BIP 342)",
+          "content": "Tapscript modifies Bitcoin's script system for Taproot script-path spends: it replaces OP_CHECKMULTISIG with OP_CHECKSIGADD (more batch-verification friendly), adds signature commitment to the script being executed, changes the signature hashing algorithm, and redefines several opcodes as OP_SUCCESS for easier future upgrades.",
+          "type": "text"
+        },
+        {
+          "heading": "Activation",
+          "content": "Taproot activated via Speedy Trial (BIP 8 variant) at block height 709632 on November 14, 2021. The activation method was itself the subject of significant community discussion, leading to the Speedy Trial compromise.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 340 - Schnorr Signatures", "url": "https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki" },
+        { "label": "BIP 341 - Taproot", "url": "https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki" },
+        { "label": "BIP 342 - Tapscript", "url": "https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki" }
+      ]
+    },
+    {
+      "id": "bt-lightning-network",
+      "category": "breakthrough",
+      "label": "Lightning Network",
+      "year": "2015",
+      "date": "2015-02-01",
+      "status": "deployed",
+      "shortInfo": "Bidirectional payment channels enabling instant, low-fee Bitcoin transactions off-chain",
+      "authors": ["Joseph Poon", "Thaddeus Dryja"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "The Lightning Network is a second-layer payment protocol that operates on top of Bitcoin. It enables near-instant, high-volume micropayments by creating a network of bidirectional payment channels. Transactions occur off-chain and only settle on Bitcoin's base layer when channels are opened or closed.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "Two parties open a payment channel by locking funds in a 2-of-2 multisig on-chain transaction. They then exchange signed commitment transactions off-chain to update balances. Payments can be routed through multiple channels using Hash Time-Locked Contracts (HTLCs), enabling payments between parties without a direct channel.",
+          "type": "text"
+        },
+        {
+          "heading": "Dependencies",
+          "content": "Lightning requires transaction malleability fixes (provided by SegWit) and time-lock opcodes (CLTV and CSV) for its HTLC-based routing and revocation mechanisms.",
+          "type": "text"
+        },
+        {
+          "heading": "Implementations",
+          "content": "Major implementations include LND (Lightning Labs), CLN/Core Lightning (Blockstream), Eclair (ACINQ), and LDK (Lightning Dev Kit by Spiral). The network has grown to tens of thousands of nodes and significant payment capacity.",
+          "type": "text",
+          "items": ["LND (Lightning Labs)", "CLN / Core Lightning (Blockstream)", "Eclair (ACINQ)", "LDK - Lightning Dev Kit (Spiral)"]
+        }
+      ],
+      "links": [
+        { "label": "Lightning Network Paper", "url": "https://lightning.network/lightning-network-paper.pdf" },
+        { "label": "BOLT Specifications", "url": "https://github.com/lightning/bolts" }
+      ]
+    },
+    {
+      "id": "bt-musig2",
+      "category": "breakthrough",
+      "label": "MuSig2",
+      "year": "2020",
+      "date": "2020-10-01",
+      "status": "deployed",
+      "shortInfo": "Two-round multi-signature scheme for Schnorr, enabling efficient n-of-n signing",
+      "authors": ["Jonas Nick", "Tim Ruffing", "Yannick Seurin"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "MuSig2 is a two-round multi-signature protocol for Schnorr signatures that produces an aggregated signature indistinguishable from a regular single-signer Schnorr signature. It improves on the original MuSig scheme by reducing the number of interactive rounds from three to two.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "Signers first exchange nonce commitments (which can be pre-shared ahead of time), then exchange partial signatures. The protocol achieves provable security under the algebraic one-more discrete logarithm assumption. The key insight is using multiple nonces per signer to avoid the Wagner/ROS attack that plagues simpler two-round schemes.",
+          "type": "text"
+        },
+        {
+          "heading": "Applications",
+          "content": "MuSig2 enables space-efficient and privacy-preserving multi-party custody, threshold signing setups, and key aggregation in Taproot key-path spends. It is fundamental to advanced Bitcoin protocols like Clementine's BitVM2-based bridges.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "MuSig2 Paper", "url": "https://eprint.iacr.org/2020/1261" },
+        { "label": "BIP 327 - MuSig2", "url": "https://github.com/bitcoin/bips/blob/master/bip-0327.mediawiki" }
+      ]
+    },
+    {
+      "id": "bt-miniscript",
+      "category": "breakthrough",
+      "label": "Miniscript",
+      "year": "2019",
+      "date": "2019-08-01",
+      "status": "deployed",
+      "shortInfo": "Structured language for writing, analyzing, and composing Bitcoin scripts safely",
+      "authors": ["Pieter Wuille", "Andrew Poelstra", "Sanket Kanjalkar"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Miniscript is a structured representation of Bitcoin Script that enables analysis, composition, generic signing, and policy compilation. It maps a subset of Bitcoin Script into a well-typed expression language where spending conditions can be reasoned about programmatically.",
+          "type": "text"
+        },
+        {
+          "heading": "Benefits",
+          "content": "Miniscript allows wallets to determine the exact conditions under which a script can be satisfied, compute the maximum witness size (important for fee estimation), compose policies from different parties, and verify that a script implements a desired policy correctly — all without executing or simulating the script.",
+          "type": "text",
+          "items": ["Static analysis of spending conditions", "Optimal witness construction", "Policy composition from multiple parties", "Formal verification of script correctness", "Maximum witness size computation"]
+        },
+        {
+          "heading": "Integration",
+          "content": "Miniscript has been integrated into Bitcoin Core's descriptor wallet (since v25.0) and is supported by the rust-miniscript library. Output descriptors (BIP 380-386) build on similar ideas to standardize how wallets describe their scripts.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Miniscript Website", "url": "https://bitcoin.sipa.be/miniscript/" },
+        { "label": "rust-miniscript", "url": "https://github.com/rust-bitcoin/rust-miniscript" }
+      ]
+    },
+    {
+      "id": "bt-dlc",
+      "category": "breakthrough",
+      "label": "Discreet Log Contracts (DLCs)",
+      "year": "2018",
+      "date": "2018-03-01",
+      "status": "experimental",
+      "shortInfo": "Oracle-based smart contracts that are private and scalable on Bitcoin",
+      "authors": ["Tadge Dryja"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Discreet Log Contracts enable conditional payments on Bitcoin based on oracle-attested real-world outcomes. Unlike Ethereum oracles, DLCs are private — the oracle doesn't know the contract exists, and the contract is indistinguishable from a regular multisig transaction on-chain.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "Two parties lock funds in a 2-of-2 multisig and pre-sign Contract Execution Transactions (CETs) for each possible outcome. The oracle publishes a Schnorr signature over the outcome, which one party can use to decrypt the adaptor signature corresponding to their favorable CET. Taproot integration makes DLCs even more efficient and private.",
+          "type": "text"
+        },
+        {
+          "heading": "Use Cases",
+          "content": "DLCs enable financial derivatives, prediction markets, insurance contracts, and sports betting — all settled trustlessly on Bitcoin without revealing contract details on-chain.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "DLC Specification", "url": "https://github.com/discreetlogcontracts/dlcspecs" },
+        { "label": "Original MIT DCI Presentation", "url": "https://dci.mit.edu/smart-contracts" }
+      ]
+    },
+    {
+      "id": "bt-bitvm",
+      "category": "breakthrough",
+      "label": "BitVM",
+      "year": "2023",
+      "date": "2023-10-09",
+      "status": "experimental",
+      "shortInfo": "Arbitrary computation verification on Bitcoin using fraud proofs and Taproot commitments",
+      "authors": ["Robin Linus"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "BitVM introduces a mechanism to verify arbitrary computations on Bitcoin without consensus changes. It uses a challenge-response fraud proof protocol where a prover commits to a computation, and a verifier can challenge any incorrect step. If the prover cheats, they lose their bonded funds.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "BitVM decomposes computations into binary logic gates (NAND gates), with each gate committed in a Taproot leaf script. The prover commits to the entire computation in a Tapscript tree. If challenged, the verifier can force the prover to reveal specific gate evaluations on-chain. Inconsistencies allow the verifier to claim the prover's bond via an equivocation challenge.",
+          "type": "text"
+        },
+        {
+          "heading": "Limitations of BitVM1",
+          "content": "The original BitVM has significant practical limitations: it only works between two parties (one prover, one verifier), requires enormous pre-signed transaction trees, and is highly interactive. These limitations motivated the development of BitVM2.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BitVM Whitepaper", "url": "https://bitvm.org/bitvm.pdf" },
+        { "label": "BitVM Website", "url": "https://bitvm.org/" }
+      ]
+    },
+    {
+      "id": "bt-bitvm2",
+      "category": "breakthrough",
+      "label": "BitVM2",
+      "year": "2024",
+      "date": "2024-08-15",
+      "status": "experimental",
+      "shortInfo": "Permissionless, multi-party fraud proof verification enabling trust-minimized Bitcoin bridges",
+      "authors": ["Robin Linus", "Lukas Aumayr", "Alexei Zamyatin", "Andrea Pelosi", "Zeta Avarikioti", "Matteo Maffei"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "BitVM2 is a major evolution of BitVM that enables permissionless verification with any number of verifiers. Unlike BitVM1's two-party model, BitVM2 uses a 1-of-n trust assumption — only one honest verifier needs to exist to catch fraud. This makes it practical for real-world bridge protocols.",
+          "type": "text"
+        },
+        {
+          "heading": "Key Improvements Over BitVM1",
+          "content": "BitVM2 reduces the number of on-chain challenge-response rounds to a constant (typically 2-3), supports permissionless challenging (anyone can verify), and dramatically reduces the amount of pre-signed transaction data needed. It achieves this by using SNARK proof verification as the computation being committed to.",
+          "type": "text",
+          "items": ["Permissionless verification (1-of-n trust model)", "Constant on-chain rounds instead of logarithmic", "SNARK verification as core computation", "Practical for bridge protocols"]
+        },
+        {
+          "heading": "Bridge Applications",
+          "content": "BitVM2 is the foundation for trust-minimized Bitcoin bridges like Citrea's Clementine bridge, enabling ZK rollups and other Layer 2 systems to bridge BTC with far stronger trust assumptions than federated multisig bridges.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BitVM2 Paper", "url": "https://bitvm.org/bitvm2" },
+        { "label": "Citrea Clementine Bridge", "url": "https://citrea.xyz" }
+      ]
+    },
+    {
+      "id": "bt-psbt",
+      "category": "breakthrough",
+      "label": "Partially Signed Bitcoin Transactions (PSBT)",
+      "year": "2017",
+      "date": "2017-07-01",
+      "status": "deployed",
+      "shortInfo": "Standardized format for incomplete transactions enabling multi-party and hardware wallet workflows",
+      "authors": ["Andrew Chow"],
+      "bips": [174, 370],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "PSBT (BIP 174) defines a standardized binary format for carrying around unsigned or partially signed transactions, along with the metadata needed for signers to produce valid signatures. BIP 370 (PSBTv2) extends this with per-input/output modification tracking.",
+          "type": "text"
+        },
+        {
+          "heading": "Why It Matters",
+          "content": "Before PSBT, there was no standard way for different wallet implementations, hardware wallets, and signing devices to cooperate on constructing transactions. PSBT enables workflows where a watch-only wallet creates a transaction, passes it to a hardware wallet for signing, and receives the signed result — all through a common format.",
+          "type": "text",
+          "items": ["Hardware wallet interoperability", "Multi-party transaction construction", "CoinJoin coordination", "Airgapped signing workflows"]
+        }
+      ],
+      "links": [
+        { "label": "BIP 174", "url": "https://github.com/bitcoin/bips/blob/master/bip-0174.mediawiki" },
+        { "label": "BIP 370", "url": "https://github.com/bitcoin/bips/blob/master/bip-0370.mediawiki" }
+      ]
+    },
+    {
+      "id": "bt-adaptor-sigs",
+      "category": "breakthrough",
+      "label": "Adaptor Signatures",
+      "year": "2018",
+      "date": "2018-01-01",
+      "status": "experimental",
+      "shortInfo": "Cryptographic primitive linking signature completion to secret revelation, enabling atomic swaps and DLCs",
+      "authors": ["Andrew Poelstra"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Adaptor signatures (also called scriptless scripts) are a cryptographic technique where a valid signature can only be completed by knowing a specific secret value. Publishing the completed signature on-chain reveals the secret to the counterparty, enabling trustless atomic exchanges without hash-locks.",
+          "type": "text"
+        },
+        {
+          "heading": "How They Work",
+          "content": "An adaptor signature is an incomplete Schnorr signature 'tweaked' by an auxiliary point T = t·G. The signer produces a pre-signature that can be verified but is not a valid signature. The counterparty who knows the discrete log t can complete it. Once the completed signature is published, t is revealed by subtracting the pre-signature from the final signature.",
+          "type": "text"
+        },
+        {
+          "heading": "Applications",
+          "content": "Adaptor signatures enable cross-chain atomic swaps without HTLCs, are integral to DLC construction, enable payment points in Lightning, and power various trustless protocols where the act of spending reveals information.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Scriptless Scripts (Andrew Poelstra)", "url": "https://github.com/apoelstra/scriptless-scripts" }
+      ]
+    },
+    {
+      "id": "bt-frost",
+      "category": "breakthrough",
+      "label": "FROST Threshold Signatures",
+      "year": "2020",
+      "date": "2020-12-01",
+      "status": "experimental",
+      "shortInfo": "Flexible Round-Optimized Schnorr Threshold signatures for t-of-n multisig",
+      "authors": ["Chelsea Komlo", "Ian Goldberg"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "FROST (Flexible Round-Optimized Schnorr Threshold Signatures) is a threshold signature scheme where any t-of-n participants can collaboratively produce a valid Schnorr signature without revealing individual private key shares. The resulting signature is indistinguishable from a standard single-signer Schnorr signature.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Differs From MuSig2",
+          "content": "While MuSig2 is an n-of-n multi-signature scheme (all signers must participate), FROST enables t-of-n threshold signing (only a subset of key holders is needed). FROST uses Shamir secret sharing for the key generation phase and a two-round signing protocol.",
+          "type": "text"
+        },
+        {
+          "heading": "Use Cases",
+          "content": "FROST is valuable for institutional custody (e.g., 3-of-5 corporate signing), distributed key management, and any scenario where not all participants may be available but funds should still be spendable.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "FROST Paper", "url": "https://eprint.iacr.org/2020/852" }
+      ]
+    },
+    {
+      "id": "bt-descriptors",
+      "category": "breakthrough",
+      "label": "Output Descriptors",
+      "year": "2018",
+      "date": "2018-07-01",
+      "status": "deployed",
+      "shortInfo": "Standardized language for describing wallet output scripts and derivation paths",
+      "authors": ["Pieter Wuille", "Andrew Chow"],
+      "bips": [380, 381, 382, 383, 384, 385, 386],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Output descriptors provide a human-readable language for describing the scripts that a wallet uses to track and create outputs. They replace the fragile and ambiguous 'wallet type' classifications (legacy, segwit, etc.) with precise, composable script descriptions.",
+          "type": "text"
+        },
+        {
+          "heading": "Examples",
+          "content": "Descriptors like wpkh([fingerprint/84'/0'/0']xpub.../0/*) precisely specify a native SegWit wallet with a specific derivation path. They support multisig (multi, sortedmulti), Taproot (tr), and arbitrary Miniscript policies.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact",
+          "content": "Descriptor wallets are now the default in Bitcoin Core (since v23.0). They enable unambiguous wallet backup and recovery, interoperable wallet imports/exports, and standardized script definitions across different wallet software.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 380 - Output Descriptors General", "url": "https://github.com/bitcoin/bips/blob/master/bip-0380.mediawiki" }
+      ]
+    },
+    {
+      "id": "bt-assumeutxo",
+      "category": "breakthrough",
+      "label": "AssumeUTXO",
+      "year": "2019",
+      "date": "2019-04-01",
+      "status": "deployed",
+      "shortInfo": "Allows near-instant node bootstrapping by loading a trusted UTXO set snapshot",
+      "authors": ["James O'Beirne"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "AssumeUTXO enables new Bitcoin Core nodes to start validating and serving the network almost immediately by loading a UTXO set snapshot at a predetermined block height. Full validation of the historical chain continues in the background.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "A UTXO snapshot is serialized and its hash is hardcoded into Bitcoin Core releases (similar to assumevalid). A bootstrapping node loads this snapshot, begins validating new blocks from the snapshot height, and simultaneously performs full validation from genesis in the background. Once background validation reaches the snapshot height, the assumed UTXO set is verified.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact",
+          "content": "AssumeUTXO dramatically reduces the time needed to bring a new node online — from hours or days of IBD (Initial Block Download) to minutes. This is increasingly important as the blockchain grows in size.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Bitcoin Core AssumeUTXO", "url": "https://github.com/bitcoin/bitcoin/issues/15605" }
+      ]
+    },
+    {
+      "id": "bt-silent-payments",
+      "category": "breakthrough",
+      "label": "Silent Payments",
+      "year": "2022",
+      "date": "2022-03-28",
+      "status": "experimental",
+      "shortInfo": "Reusable stealth addresses for receiving Bitcoin without address reuse or interaction",
+      "authors": ["Ruben Somsen"],
+      "bips": [352],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Silent Payments (BIP 352) enable a recipient to publish a single static address that senders can use to derive unique on-chain addresses for each payment. This eliminates address reuse without requiring any interaction between sender and receiver.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "The sender uses ECDH (Elliptic Curve Diffie-Hellman) between their input private keys and the recipient's static public key to derive a shared secret. This shared secret tweaks the recipient's public key to produce a unique Taproot output address for each transaction. The recipient scans the blockchain using their private key to detect incoming payments.",
+          "type": "text"
+        },
+        {
+          "heading": "Trade-offs",
+          "content": "Silent Payments improve privacy significantly but require the recipient to scan all transactions (or use a light client protocol) to detect incoming payments. Sending requires access to the private keys of the inputs being spent, which complicates some hardware wallet workflows.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 352", "url": "https://github.com/bitcoin/bips/blob/master/bip-0352.mediawiki" },
+        { "label": "Silent Payments Explainer", "url": "https://silentpayments.xyz/" }
+      ]
+    },
+    {
+      "id": "bt-stratum-v2",
+      "category": "breakthrough",
+      "label": "Stratum V2",
+      "year": "2019",
+      "date": "2019-11-01",
+      "status": "experimental",
+      "shortInfo": "Next-generation mining protocol with encrypted communication and decentralized block template construction",
+      "authors": ["Matt Corallo", "Jan Čapek", "Pavel Moravec"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Stratum V2 is a complete overhaul of the Stratum mining protocol that introduces encrypted communication between miners and pools, enables miners to construct their own block templates, and significantly reduces data transfer overhead.",
+          "type": "text"
+        },
+        {
+          "heading": "Key Features",
+          "content": "The protocol uses AEAD encryption (Noise framework) to prevent man-in-the-middle attacks and hashrate hijacking. Its Job Negotiation Protocol allows individual miners to select their own transactions, reducing pool operators' control over transaction inclusion and improving Bitcoin's censorship resistance.",
+          "type": "text",
+          "items": ["Encrypted miner-pool communication", "Miner-side transaction selection", "Reduced bandwidth via binary framing", "Improved decentralization of block construction"]
+        }
+      ],
+      "links": [
+        { "label": "Stratum V2 Specification", "url": "https://stratumprotocol.org/" },
+        { "label": "Stratum V2 GitHub", "url": "https://github.com/stratum-mining/stratum" }
+      ]
+    },
+    {
+      "id": "bt-coinjoin",
+      "category": "breakthrough",
+      "label": "CoinJoin",
+      "year": "2013",
+      "date": "2013-08-22",
+      "status": "deployed",
+      "shortInfo": "Privacy technique combining multiple users' transactions into a single transaction",
+      "authors": ["Gregory Maxwell"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "CoinJoin is a privacy-enhancing technique where multiple users combine their inputs and outputs into a single Bitcoin transaction. This breaks the common-input-ownership heuristic used by chain analysis, making it difficult to determine which inputs paid which outputs.",
+          "type": "text"
+        },
+        {
+          "heading": "Implementations",
+          "content": "Notable CoinJoin implementations include Wasabi Wallet's WabiSabi protocol (successor to ZeroLink), JoinMarket (a decentralized market-maker model), and the formerly used Whirlpool (Samourai Wallet). Each uses different coordination mechanisms and trade-offs between privacy, cost, and liquidity.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Gregory Maxwell's CoinJoin Post", "url": "https://bitcointalk.org/index.php?topic=279249.0" }
+      ]
+    },
+    {
+      "id": "bt-compact-blocks",
+      "category": "breakthrough",
+      "label": "Compact Block Relay (BIP 152)",
+      "year": "2016",
+      "date": "2016-04-27",
+      "status": "deployed",
+      "shortInfo": "Reduces block propagation bandwidth by transmitting short transaction IDs instead of full transactions",
+      "authors": ["Matt Corallo"],
+      "bips": [152],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Compact Block Relay (BIP 152) dramatically reduces the bandwidth required for block propagation by sending short transaction identifiers instead of full transactions. Since most transactions in a new block are already in a node's mempool, only the block structure and any missing transactions need to be transmitted.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact",
+          "content": "This optimization reduced block propagation time significantly, helping to reduce stale blocks and improve mining fairness. It supports both a low-bandwidth mode (full round-trip) and a high-bandwidth mode (proactive relay) for latency-sensitive miners.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 152", "url": "https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki" }
+      ]
+    },
+    {
+      "id": "bt-erlay",
+      "category": "breakthrough",
+      "label": "Erlay",
+      "year": "2019",
+      "date": "2019-05-28",
+      "status": "experimental",
+      "shortInfo": "Bandwidth-efficient transaction relay using set reconciliation (Minisketch)",
+      "authors": ["Gleb Naumenko", "Pieter Wuille", "Gregory Maxwell", "Sasha Fedorova", "Ivan Beschastnikh"],
+      "bips": [330],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Erlay proposes a more bandwidth-efficient method for relaying transactions across the Bitcoin P2P network. Instead of flooding every transaction to every peer, Erlay uses set reconciliation (via the Minisketch library) to periodically synchronize transaction inventories between peers with minimal bandwidth.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact",
+          "content": "Erlay could reduce the bandwidth overhead of transaction relay by approximately 84% while maintaining similar propagation latency. This would allow nodes to maintain more peer connections (improving network connectivity and resilience) without proportionally increasing bandwidth costs.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Erlay Paper", "url": "https://arxiv.org/abs/1905.10518" },
+        { "label": "BIP 330", "url": "https://github.com/bitcoin/bips/blob/master/bip-0330.mediawiki" }
+      ]
+    },
+    {
+      "id": "bt-ark",
+      "category": "breakthrough",
+      "label": "Ark Protocol",
+      "year": "2023",
+      "date": "2023-05-22",
+      "status": "research",
+      "shortInfo": "Off-chain payment protocol using virtual UTXOs (vTXOs) for scalable, non-interactive payments",
+      "authors": ["Burak Keceli"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Ark is a second-layer protocol that uses an always-on server (Ark Service Provider, or ASP) to facilitate non-interactive payments via virtual UTXOs (vTXOs). Unlike Lightning, Ark does not require recipients to be online or manage payment channels, and payments don't require inbound liquidity.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "The ASP periodically creates 'round transactions' that batch multiple virtual UTXOs into shared on-chain outputs using CTV-like covenant structures (or pre-signed transaction trees in the current design). Users can atomically swap their vTXOs between rounds. The ASP provides liquidity but cannot steal funds.",
+          "type": "text"
+        },
+        {
+          "heading": "Current Status",
+          "content": "Ark implementations exist using pre-signed transactions and connector outputs (without requiring new opcodes), though covenants like CTV or TXHASH would make Ark significantly more efficient. Several teams are actively developing Ark implementations.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Ark Protocol", "url": "https://ark-protocol.org/" }
+      ]
+    },
+    {
+      "id": "bt-ordinals-inscriptions",
+      "category": "breakthrough",
+      "label": "Ordinals & Inscriptions",
+      "year": "2023",
+      "date": "2023-01-21",
+      "status": "deployed",
+      "shortInfo": "Protocol for numbering individual satoshis and inscribing data into the Bitcoin blockchain",
+      "authors": ["Casey Rodarmor"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "Ordinals Theory assigns a sequential number to every satoshi based on the order it was mined, enabling individual satoshis to be tracked, transferred, and collected. Inscriptions extend this by embedding arbitrary data (images, text, HTML, etc.) in witness data of Taproot transactions.",
+          "type": "text"
+        },
+        {
+          "heading": "Technical Mechanism",
+          "content": "Inscriptions are stored in Taproot script-path spend witnesses using an envelope pattern: OP_FALSE OP_IF ... OP_ENDIF containing the content type and data. Since this data is in the witness and is a script-path spend, it benefits from the SegWit witness discount, making data storage relatively inexpensive.",
+          "type": "text"
+        },
+        {
+          "heading": "Impact and Controversy",
+          "content": "Ordinals and inscriptions sparked significant debate within the Bitcoin community. They drove substantial increases in block space demand and fees, created a new NFT ecosystem on Bitcoin, and raised questions about the appropriate use of block space. The BRC-20 token standard built on inscriptions added fungible tokens to Bitcoin.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Ordinals Documentation", "url": "https://docs.ordinals.com/" },
+        { "label": "Ord Explorer", "url": "https://ordinals.com/" }
+      ]
+    },
+    {
+      "id": "pr-ctv",
+      "category": "proposed",
+      "label": "OP_CHECKTEMPLATEVERIFY (CTV)",
+      "year": "2019",
+      "date": "2019-12-01",
+      "status": "proposed",
+      "shortInfo": "Simple covenant opcode that constrains the structure of spending transactions",
+      "authors": ["Jeremy Rubin"],
+      "bips": [119],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "OP_CHECKTEMPLATEVERIFY (BIP 119) is a proposed covenant opcode that allows an output's script to constrain the exact transaction that can spend it — specifically the outputs, locktime, and other structural fields of the spending transaction. It achieves this by checking that a hash of the spending transaction template matches a committed value.",
+          "type": "text"
+        },
+        {
+          "heading": "Use Cases",
+          "content": "CTV enables a wide variety of applications: congestion control (batching many payments into a single UTXO that expands on-chain later), vaults (time-delayed withdrawal paths), efficient Ark-style protocols, payment pools, and more sophisticated smart contracts without requiring key agreement.",
+          "type": "text",
+          "items": ["Congestion control / payment batching", "Non-interactive vaults", "Efficient Ark protocol", "Payment pools", "DLC oracle commitment optimization"]
+        },
+        {
+          "heading": "Status",
+          "content": "CTV is one of the most discussed covenant proposals and has been through multiple rounds of review. A signet with CTV has been operational. Debate continues around whether CTV alone is sufficient or whether a more general covenant mechanism is preferable.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 119", "url": "https://github.com/bitcoin/bips/blob/master/bip-0119.mediawiki" },
+        { "label": "utxos.org - CTV tracking", "url": "https://utxos.org/" }
+      ]
+    },
+    {
+      "id": "pr-cat",
+      "category": "proposed",
+      "label": "OP_CAT",
+      "year": "2023",
+      "date": "2023-10-21",
+      "status": "proposed",
+      "shortInfo": "Restores byte string concatenation opcode, enabling covenants and advanced script logic",
+      "authors": ["Ethan Heilman", "Armin Sabouri"],
+      "bips": [347],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "OP_CAT (BIP 347) proposes re-enabling the byte string concatenation opcode that was disabled by Satoshi in 2010. In the Tapscript context, it concatenates the top two stack elements (with a 520-byte limit) and places the result on the stack.",
+          "type": "text"
+        },
+        {
+          "heading": "Why It Matters",
+          "content": "Despite its simplicity, OP_CAT is surprisingly powerful. Combined with Schnorr signatures and existing opcodes, it enables recursive covenants, on-chain STARK/SNARK verification (via Fiat-Shamir in Script), Merkle tree validation, vaults, and many other advanced applications that are currently impossible in Bitcoin Script.",
+          "type": "text",
+          "items": ["Recursive covenants via script introspection", "On-chain ZK proof verification", "Merkle tree proofs in Script", "Vaults and spending conditions", "Enhanced DLC constructions"]
+        },
+        {
+          "heading": "Debate",
+          "content": "OP_CAT has generated significant discussion. Proponents argue it's a minimal, well-understood change that unlocks enormous functionality. Critics express concern about enabling recursive covenants, potential MEV dynamics from ZK verification, and the precedent of re-enabling disabled opcodes. Despite debate, OP_CAT has broad community interest.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 347", "url": "https://github.com/bitcoin/bips/blob/master/bip-0347.mediawiki" },
+        { "label": "OP_CAT Research", "url": "https://opcat.wtf/" }
+      ]
+    },
+    {
+      "id": "pr-txhash",
+      "category": "proposed",
+      "label": "OP_TXHASH / OP_CHECKTXHASHVERIFY",
+      "year": "2023",
+      "date": "2023-09-01",
+      "status": "proposed",
+      "shortInfo": "Flexible transaction introspection opcode that generalizes CTV with field selection",
+      "authors": ["Steven Roose"],
+      "bips": [371],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "OP_TXHASH proposes an opcode that pushes a hash of selected transaction fields onto the stack. Unlike CTV's fixed template hash, TXHASH accepts a 'TxFieldSelector' that specifies which fields to include (specific inputs, specific outputs, locktime, etc.), offering much greater flexibility.",
+          "type": "text"
+        },
+        {
+          "heading": "Relationship to CTV",
+          "content": "OP_TXHASH can be viewed as a generalization of CTV. Where CTV commits to a fixed set of transaction fields, TXHASH allows selecting individual inputs and outputs for introspection. This enables partial covenant patterns where some transaction fields are constrained while others remain free.",
+          "type": "text"
+        },
+        {
+          "heading": "Use Cases",
+          "content": "The flexible field selection enables more efficient vault constructions, partial spending constraints (e.g., constrain some outputs but allow change), advanced Ark-style protocols, and other covenant patterns that CTV alone cannot express efficiently.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 371 Draft", "url": "https://github.com/bitcoin/bips/pull/1500" }
+      ]
+    },
+    {
+      "id": "pr-lnhance",
+      "category": "proposed",
+      "label": "LNHANCE Bundle",
+      "year": "2024",
+      "date": "2024-01-01",
+      "status": "proposed",
+      "shortInfo": "Combined proposal of CTV + CSFS + INTERNALKEY for covenant and Lightning improvements",
+      "authors": ["Brandon Black", "Jeremy Rubin"],
+      "bips": [119, 348, 349],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "LNHANCE is a bundled soft fork proposal combining three opcodes: OP_CHECKTEMPLATEVERIFY (BIP 119), OP_CHECKSIGFROMSTACK (BIP 348), and OP_INTERNALKEY (BIP 349). Together, they enable a comprehensive set of covenant and introspection capabilities with minimal complexity.",
+          "type": "text"
+        },
+        {
+          "heading": "Components",
+          "content": "CTV provides basic covenant functionality. CHECKSIGFROMSTACK (CSFS) allows verifying a signature against arbitrary data on the stack (not just transaction hashes), enabling delegation and oracle-based spending conditions. INTERNALKEY pushes the Taproot internal key onto the stack, enabling scripts to reference the key-path key for efficient covenant designs.",
+          "type": "text",
+          "items": ["OP_CTV (BIP 119) — template-based covenants", "OP_CSFS (BIP 348) — stack data signature verification", "OP_INTERNALKEY (BIP 349) — Taproot key introspection"]
+        },
+        {
+          "heading": "Enabled Applications",
+          "content": "The combination enables LN-Symmetry (eltoo-style channels), non-interactive vaults, more efficient DLCs, timeout trees, channel factories, and various Layer 2 improvements. CSFS + CTV together provide much of the functionality of more complex covenant proposals.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "LNHANCE Discussion", "url": "https://delvingbitcoin.org/t/lnhance-bips-and-implementation/376" }
+      ]
+    },
+    {
+      "id": "pr-ln-symmetry",
+      "category": "proposed",
+      "label": "LN-Symmetry (Eltoo)",
+      "year": "2018",
+      "date": "2018-04-30",
+      "status": "proposed",
+      "shortInfo": "Simplified Lightning channel update mechanism using SIGHASH_ANYPREVOUT",
+      "authors": ["Christian Decker", "Rusty Russell", "Olaoluwa Osuntokun"],
+      "bips": [118],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "LN-Symmetry (formerly eltoo) is a proposed Lightning channel construction that simplifies the penalty mechanism by allowing any later state to override any earlier state, without the complex revocation-based design of current Lightning channels.",
+          "type": "text"
+        },
+        {
+          "heading": "SIGHASH_ANYPREVOUT (APO)",
+          "content": "LN-Symmetry requires BIP 118 (SIGHASH_ANYPREVOUT), which introduces new signature hash modes where the signature does not commit to the specific input being spent. This allows update transactions to be re-bound to the latest on-chain state, enabling the simple state replacement mechanism.",
+          "type": "text"
+        },
+        {
+          "heading": "Advantages",
+          "content": "LN-Symmetry eliminates toxic waste (old revoked states that could cause fund loss), simplifies watchtower implementations (watchtowers only need the latest state, not all prior states), reduces storage requirements, and enables more straightforward multi-party channel constructions.",
+          "type": "text",
+          "items": ["No toxic waste from revoked states", "Simplified watchtower design", "Reduced storage requirements", "Easier multi-party channels (channel factories)"]
+        }
+      ],
+      "links": [
+        { "label": "BIP 118 - SIGHASH_ANYPREVOUT", "url": "https://github.com/bitcoin/bips/blob/master/bip-0118.mediawiki" },
+        { "label": "Eltoo Paper", "url": "https://blockstream.com/eltoo.pdf" }
+      ]
+    },
+    {
+      "id": "pr-vaults",
+      "category": "proposed",
+      "label": "OP_VAULT (BIP 345)",
+      "year": "2023",
+      "date": "2023-01-01",
+      "status": "proposed",
+      "shortInfo": "Dedicated vault opcodes for time-delayed withdrawals with clawback capability",
+      "authors": ["James O'Beirne"],
+      "bips": [345],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "OP_VAULT (BIP 345) proposes dedicated opcodes (OP_VAULT and OP_VAULT_RECOVER) that enable Bitcoin vaults — a custody pattern where withdrawals go through a mandatory time-delay during which the owner can 'claw back' funds to a recovery path if they detect unauthorized spending.",
+          "type": "text"
+        },
+        {
+          "heading": "How It Works",
+          "content": "A vault output specifies a recovery key, a target hash for the spend path, and a time delay. To spend, a user triggers an unvaulting transaction that starts the time-lock. During the delay, if the transaction was unauthorized, the recovery key can sweep funds to a pre-committed recovery address. If the delay passes without challenge, the funds move to the intended destination.",
+          "type": "text"
+        },
+        {
+          "heading": "Advantages Over CTV-Based Vaults",
+          "content": "OP_VAULT provides more efficient and flexible vaults than CTV alone: it supports partial unvaulting (spending some funds while keeping the rest vaulted), batched recoveries, and doesn't require pre-committing to exact output amounts at vault creation time.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "BIP 345", "url": "https://github.com/bitcoin/bips/blob/master/bip-0345.mediawiki" },
+        { "label": "OP_VAULT Explainer", "url": "https://jameso.be/vaults.pdf" }
+      ]
+    },
+    {
+      "id": "pr-great-script-restoration",
+      "category": "proposed",
+      "label": "Great Script Restoration",
+      "year": "2024",
+      "date": "2024-04-01",
+      "status": "research",
+      "shortInfo": "Proposal to re-enable and enhance Bitcoin's original scripting capabilities",
+      "authors": ["Rusty Russell"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "The Great Script Restoration proposes re-enabling many of the original Bitcoin Script opcodes that were disabled by Satoshi in 2010, including arithmetic, string manipulation, and logic operations. The approach adds proper resource limits rather than disabling functionality.",
+          "type": "text"
+        },
+        {
+          "heading": "Philosophy",
+          "content": "Rather than adding individual opcodes one at a time (CTV, CAT, CSFS, etc.), the Great Script Restoration argues for restoring Script's general-purpose capabilities in a single comprehensive soft fork. This would avoid the need for repeated soft forks to add functionality piecemeal.",
+          "type": "text"
+        },
+        {
+          "heading": "Proposed Changes",
+          "content": "The proposal includes re-enabling string and arithmetic opcodes (OP_CAT, OP_SUBSTR, OP_MUL, OP_DIV, etc.) with proper size limits, adding 64-bit arithmetic support, and introducing new resource accounting to prevent denial-of-service attacks. A Tapscript-only deployment (via a new leaf version) would ensure backward compatibility.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Rusty Russell Presentation", "url": "https://delvingbitcoin.org/t/great-consensus-cleanup-revival/710" }
+      ]
+    },
+    {
+      "id": "bt-zk-rollups",
+      "category": "breakthrough",
+      "label": "Bitcoin ZK Rollups",
+      "year": "2023",
+      "date": "2023-06-01",
+      "status": "experimental",
+      "shortInfo": "Zero-knowledge proof-based Layer 2 systems bringing scalability and programmability to Bitcoin",
+      "authors": ["Various"],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "ZK rollups on Bitcoin execute transactions off-chain and produce zero-knowledge proofs of correct execution. These proofs are verified on Bitcoin (via BitVM2 or future opcodes), inheriting Bitcoin's security while providing dramatically higher throughput and programmability (e.g., EVM compatibility).",
+          "type": "text"
+        },
+        {
+          "heading": "How They Work on Bitcoin",
+          "content": "Since Bitcoin lacks native ZK proof verification opcodes, current Bitcoin ZK rollups use BitVM2's fraud proof mechanism to verify proofs optimistically. A proof is assumed valid unless challenged. Challengers can use the BitVM2 protocol to prove on-chain that a proof is invalid. This gives a 1-of-n trust assumption rather than full verification.",
+          "type": "text"
+        },
+        {
+          "heading": "Notable Projects",
+          "content": "Citrea is a prominent Bitcoin ZK rollup that uses the Clementine bridge (built on BitVM2) for trust-minimized BTC bridging. Other projects explore various approaches to combining ZK proofs with Bitcoin's existing scripting capabilities, and proposals like OP_CAT could eventually enable on-chain ZK verification natively.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Citrea", "url": "https://citrea.xyz" },
+        { "label": "BitVM Bridge", "url": "https://bitvm.org/" }
+      ]
+    },
+    {
+      "id": "pr-consensus-cleanup",
+      "category": "proposed",
+      "label": "Great Consensus Cleanup",
+      "year": "2019",
+      "date": "2019-03-06",
+      "status": "proposed",
+      "shortInfo": "Fixes long-standing consensus bugs including timewarp attack and merkle tree vulnerabilities",
+      "authors": ["Matt Corallo", "Antoine Poinsot"],
+      "bips": [],
+      "sections": [
+        {
+          "heading": "Overview",
+          "content": "The Great Consensus Cleanup proposes fixing several long-known consensus vulnerabilities in Bitcoin, including the timewarp attack (which could allow miners to artificially reduce difficulty), the duplicate coinbase transaction vulnerability (CVE-2012-2459), and issues with how 64-byte transactions interact with Merkle tree verification.",
+          "type": "text"
+        },
+        {
+          "heading": "Timewarp Attack Fix",
+          "content": "The timewarp attack exploits the fact that Bitcoin's difficulty adjustment uses the timestamp of the first and last blocks of a 2016-block period, and that the timestamp of the first block in a new period is not constrained relative to the last block of the previous period. The fix constrains the timestamp of the first block of each new period.",
+          "type": "text"
+        },
+        {
+          "heading": "Other Fixes",
+          "content": "The proposal also addresses Merkle tree ambiguity issues where certain transaction sizes could create forged block proofs, and proposes invalidating extremely small (below 65 bytes) legacy transactions to prevent related attacks.",
+          "type": "text"
+        }
+      ],
+      "links": [
+        { "label": "Revival Discussion", "url": "https://delvingbitcoin.org/t/great-consensus-cleanup-revival/710" }
+      ]
+    }
+  ],
+  "connections": [
+    { "from": "genesis", "to": "sf-p2sh", "relationship": "timeline" },
+    { "from": "sf-p2sh", "to": "sf-cltv", "relationship": "timeline" },
+    { "from": "sf-cltv", "to": "sf-csv", "relationship": "timeline" },
+    { "from": "sf-csv", "to": "sf-segwit", "relationship": "timeline" },
+    { "from": "sf-segwit", "to": "sf-taproot", "relationship": "timeline" },
+
+    { "from": "sf-cltv", "to": "bt-lightning-network", "relationship": "dependency" },
+    { "from": "sf-csv", "to": "bt-lightning-network", "relationship": "dependency" },
+    { "from": "sf-segwit", "to": "bt-lightning-network", "relationship": "dependency" },
+    { "from": "sf-segwit", "to": "sf-taproot", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-musig2", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-bitvm", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-bitvm2", "relationship": "dependency" },
+    { "from": "bt-bitvm", "to": "bt-bitvm2", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-ordinals-inscriptions", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-silent-payments", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-dlc", "relationship": "dependency" },
+    { "from": "bt-adaptor-sigs", "to": "bt-dlc", "relationship": "dependency" },
+    { "from": "sf-segwit", "to": "bt-psbt", "relationship": "dependency" },
+    { "from": "sf-p2sh", "to": "bt-miniscript", "relationship": "dependency" },
+    { "from": "sf-segwit", "to": "bt-miniscript", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-frost", "relationship": "dependency" },
+    { "from": "bt-musig2", "to": "bt-frost", "relationship": "dependency" },
+    { "from": "bt-bitvm2", "to": "bt-zk-rollups", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "bt-zk-rollups", "relationship": "dependency" },
+    { "from": "bt-compact-blocks", "to": "bt-erlay", "relationship": "dependency" },
+    { "from": "sf-segwit", "to": "bt-descriptors", "relationship": "dependency" },
+    { "from": "bt-miniscript", "to": "bt-descriptors", "relationship": "dependency" },
+
+    { "from": "sf-taproot", "to": "pr-ctv", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "pr-cat", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "pr-txhash", "relationship": "dependency" },
+    { "from": "pr-ctv", "to": "pr-lnhance", "relationship": "dependency" },
+    { "from": "pr-ctv", "to": "bt-ark", "relationship": "proposed-dependency" },
+    { "from": "pr-cat", "to": "bt-zk-rollups", "relationship": "proposed-dependency" },
+    { "from": "pr-cat", "to": "pr-great-script-restoration", "relationship": "dependency" },
+    { "from": "pr-lnhance", "to": "pr-ln-symmetry", "relationship": "proposed-dependency" },
+    { "from": "bt-lightning-network", "to": "pr-ln-symmetry", "relationship": "dependency" },
+    { "from": "sf-taproot", "to": "pr-vaults", "relationship": "dependency" },
+    { "from": "pr-ctv", "to": "pr-vaults", "relationship": "proposed-dependency" },
+    { "from": "pr-txhash", "to": "bt-ark", "relationship": "proposed-dependency" }
+  ]
+}
