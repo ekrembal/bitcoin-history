@@ -90,10 +90,7 @@ export function importRawHistoryJson(file: File): Promise<BitcoinHistoryJson> {
     const reader = new FileReader();
     reader.onload = () => {
       try {
-        const parsed = JSON.parse(reader.result as string);
-        if (parsed.v && parsed.data) resolve(parsed.data as BitcoinHistoryJson);
-        else if (parsed.version && parsed.nodes) resolve(parsed as BitcoinHistoryJson);
-        else throw new Error("Unrecognized JSON format");
+        resolve(parsePastedJson(reader.result as string));
       } catch (e) {
         reject(e);
       }
@@ -101,4 +98,15 @@ export function importRawHistoryJson(file: File): Promise<BitcoinHistoryJson> {
     reader.onerror = () => reject(reader.error);
     reader.readAsText(file);
   });
+}
+
+/** Parse pasted/string JSON into BitcoinHistoryJson. Supports raw history or SharePayload format. */
+export function parsePastedJson(json: string): BitcoinHistoryJson {
+  const parsed = JSON.parse(json) as unknown;
+  if (typeof parsed !== "object" || parsed === null) throw new Error("Invalid JSON");
+  if ("v" in parsed && parsed.v === 2 && "data" in parsed)
+    return parsed.data as BitcoinHistoryJson;
+  if ("version" in parsed && parsed.version === 1 && "nodes" in parsed)
+    return parsed as BitcoinHistoryJson;
+  throw new Error("Unrecognized JSON format. Need version:1 with nodes, or SharePayload format.");
 }

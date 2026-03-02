@@ -1,0 +1,449 @@
+{
+  "version": 1,
+  "title": "Bitcoin Technical History",
+  "description": "An interactive timeline of Bitcoin's technical evolution, featuring major soft forks, cryptographic breakthroughs, and active proposals based on Bitcoin Optech.",
+  "author": "Gemini 3.1 Pro",
+  "generatedAt": "2026-03-01",
+  "nodes": [
+    {
+      "id": "genesis",
+      "category": "genesis",
+      "label": "Bitcoin Whitepaper",
+      "year": "2008",
+      "status": "deployed",
+      "shortInfo": "Satoshi Nakamoto publishes the Bitcoin whitepaper, describing a peer-to-peer electronic cash system.",
+      "authors": ["Satoshi Nakamoto"],
+      "sections": [
+        {
+          "heading": "The Beginning",
+          "content": "The original design of Bitcoin, introducing the blockchain, proof-of-work, and the UTXO model to solve the double-spending problem without a trusted third party."
+        }
+      ]
+    },
+    {
+      "id": "sf-nlocktime-enforcement",
+      "category": "softfork",
+      "label": "nLockTime Enforcement",
+      "year": "2009",
+      "status": "deployed",
+      "shortInfo": "Hardcoded activation at block 31,000 to enforce nLockTime consensus rules.",
+      "sections": [
+        {
+          "heading": "First Soft Fork",
+          "content": "The earliest known soft fork in Bitcoin, implemented in version 0.1.6, activated via a hardcoded block height to enforce transaction locktimes."
+        }
+      ]
+    },
+    {
+      "id": "sf-p2sh",
+      "category": "softfork",
+      "label": "P2SH (Pay-to-Script-Hash)",
+      "year": "2012",
+      "status": "deployed",
+      "shortInfo": "Allows transactions to be sent to a script hash, moving the burden of providing the conditions to the spender.",
+      "bips": ["16"],
+      "sections": [
+        {
+          "heading": "Standardizing Complex Scripts",
+          "content": "BIP16 introduced P2SH to simplify the use of complex scripts, like multisig, by allowing the sender to fund a 20-byte hash, leaving the spender to reveal the full script and signatures."
+        }
+      ]
+    },
+    {
+      "id": "sf-bip30",
+      "category": "softfork",
+      "label": "Duplicate TXID Fix",
+      "year": "2012",
+      "status": "deployed",
+      "shortInfo": "Prevents blocks from containing transactions with identical TXIDs to unspent outputs.",
+      "bips": ["30"],
+      "sections": [
+        {
+          "heading": "Security Fix",
+          "content": "Prevented an attack where duplicate transaction IDs could overwrite old UTXOs, inadvertently destroying user funds."
+        }
+      ]
+    },
+    {
+      "id": "sf-bip34",
+      "category": "softfork",
+      "label": "Coinbase Block Height",
+      "year": "2012",
+      "status": "deployed",
+      "shortInfo": "Requires coinbase transactions to include the block height, ensuring unique TXIDs.",
+      "bips": ["34"],
+      "sections": [
+        {
+          "heading": "Ensuring Unique Transactions",
+          "content": "Further mitigated the duplicate TXID issue by forcing coinbase transactions to include the block height, guaranteeing that every new coinbase transaction (and thus its TXID) is unique."
+        }
+      ]
+    },
+    {
+      "id": "sf-bip66",
+      "category": "softfork",
+      "label": "Strict DER Signatures",
+      "year": "2015",
+      "status": "deployed",
+      "shortInfo": "Requires all ECDSA signatures to be strictly DER-encoded.",
+      "bips": ["66"],
+      "authors": ["Pieter Wuille"],
+      "sections": [
+        {
+          "heading": "Consensus Stability",
+          "content": "Resolved an issue where discrepancies in OpenSSL versions across different operating systems could lead to unintentional chain splits due to varying signature parsing rules."
+        }
+      ]
+    },
+    {
+      "id": "sf-cltv",
+      "category": "softfork",
+      "label": "OP_CHECKLOCKTIMEVERIFY (CLTV)",
+      "year": "2015",
+      "status": "deployed",
+      "shortInfo": "Allows a transaction output to be made unspendable until a certain point in the future.",
+      "bips": ["65"],
+      "authors": ["Peter Todd"],
+      "sections": [
+        {
+          "heading": "Absolute Timelocks",
+          "content": "Introduced OP_CHECKLOCKTIMEVERIFY, enabling trustless contract protocols, including Hash Time Locked Contracts (HTLCs), which are foundational for the Lightning Network."
+        }
+      ]
+    },
+    {
+      "id": "sf-csv",
+      "category": "softfork",
+      "label": "Relative Timelocks (CSV)",
+      "year": "2016",
+      "status": "deployed",
+      "shortInfo": "Allows outputs to be timelocked relative to the confirmation time of their parent transaction.",
+      "bips": ["68", "112", "113"],
+      "sections": [
+        {
+          "heading": "Sequence Numbers and OP_CSV",
+          "content": "Repurposed the nSequence field for consensus-enforced relative locktimes and introduced OP_CHECKSEQUENCEVERIFY. This enabled bi-directional payment channels to remain open indefinitely."
+        }
+      ]
+    },
+    {
+      "id": "sf-segwit",
+      "category": "softfork",
+      "label": "Segregated Witness (Segwit)",
+      "year": "2017",
+      "status": "deployed",
+      "shortInfo": "Fixed transaction malleability and increased effective block size by separating signatures from transaction data.",
+      "bips": ["141", "143", "144", "148", "91"],
+      "sections": [
+        {
+          "heading": "Malleability Fix and Capacity Increase",
+          "content": "Segwit fixed the long-standing transaction malleability issue, making second-layer networks like Lightning safe to deploy. It also introduced block weight limits, effectively increasing on-chain capacity."
+        }
+      ]
+    },
+    {
+      "id": "sf-taproot",
+      "category": "softfork",
+      "label": "Taproot",
+      "year": "2021",
+      "status": "deployed",
+      "shortInfo": "Introduced Schnorr signatures, MAST, and Tapscript to improve privacy, efficiency, and scripting capabilities.",
+      "bips": ["340", "341", "342"],
+      "authors": [
+        "Pieter Wuille",
+        "Gregory Maxwell",
+        "Anthony Towns",
+        "et al."
+      ],
+      "sections": [
+        {
+          "heading": "Schnorr and MAST",
+          "content": "Schnorr signatures allow for key and signature aggregation, making multisig indistinguishable from single-sig. MAST allows complex smart contracts to hide unexecuted branches, saving space and improving privacy."
+        }
+      ]
+    },
+    {
+      "id": "bt-lightning",
+      "category": "breakthrough",
+      "label": "Lightning Network",
+      "year": "2015",
+      "status": "deployed",
+      "shortInfo": "Layer-2 payment protocol utilizing payment channels for instant, low-fee microtransactions.",
+      "authors": ["Joseph Poon", "Thaddeus Dryja"],
+      "sections": [
+        {
+          "heading": "Scalable Off-Chain Payments",
+          "content": "Uses LN-Penalty, HTLCs, and onion routing to create a scalable, off-chain network of payment channels. Made viable by the malleability fix in Segwit."
+        }
+      ]
+    },
+    {
+      "id": "bt-coinjoin",
+      "category": "breakthrough",
+      "label": "Coinjoin",
+      "year": "2013",
+      "status": "deployed",
+      "shortInfo": "Trustless protocol for mixing UTXOs from multiple owners to obscure transaction history.",
+      "authors": ["Gregory Maxwell"],
+      "sections": [
+        {
+          "heading": "Privacy Enhancement",
+          "content": "Allows multiple participants to combine inputs and outputs into a single large transaction, breaking the heuristic that all inputs to a transaction belong to the same entity."
+        }
+      ]
+    },
+    {
+      "id": "bt-musig",
+      "category": "breakthrough",
+      "label": "MuSig",
+      "year": "2018",
+      "status": "experimental",
+      "shortInfo": "A multi-signature scheme for Schnorr signatures allowing n-of-n signers to produce a single aggregated signature.",
+      "sections": [
+        {
+          "heading": "Scriptless Multisignatures",
+          "content": "Enabled by Taproot, MuSig allows multiple parties to aggregate their keys and signatures into one, saving block space and making multisig transactions look identical to single-sig."
+        }
+      ]
+    },
+    {
+      "id": "bt-psbt",
+      "category": "breakthrough",
+      "label": "PSBT",
+      "year": "2017",
+      "status": "deployed",
+      "shortInfo": "Partially Signed Bitcoin Transactions standardize the format for passing unsigned or partially signed transactions between software/hardware.",
+      "bips": ["174", "370"],
+      "sections": [
+        {
+          "heading": "Interoperability",
+          "content": "Allows hardware wallets, air-gapped devices, and multi-sig coordinators to seamlessly exchange transaction data and signatures."
+        }
+      ]
+    },
+    {
+      "id": "bt-dlc",
+      "category": "breakthrough",
+      "label": "Discreet Log Contracts",
+      "year": "2017",
+      "status": "experimental",
+      "shortInfo": "Oracle-based smart contracts that hide the contract terms from the blockchain.",
+      "authors": ["Tadge Dryja"],
+      "sections": [
+        {
+          "heading": "Private Oracle Contracts",
+          "content": "Parties agree to terms off-chain. An oracle later publishes a signature corresponding to the outcome, which the winning party uses to claim funds. The oracle doesn't need to know about the contract."
+        }
+      ]
+    },
+    {
+      "id": "pr-ctv",
+      "category": "proposed",
+      "label": "OP_CHECKTEMPLATEVERIFY (CTV)",
+      "year": "2019",
+      "status": "proposed",
+      "shortInfo": "A covenant proposal allowing an output to restrict the specific transaction structure that can spend it.",
+      "bips": ["119"],
+      "authors": ["Jeremy Rubin"],
+      "sections": [
+        {
+          "heading": "Covenants and Congestion Control",
+          "content": "CTV allows a transaction to commit to the outputs of the transaction that spends it. Use cases include congestion control, vault creation, and scaling solutions like Channel Factories and Timeout Trees."
+        }
+      ]
+    },
+    {
+      "id": "pr-apo",
+      "category": "proposed",
+      "label": "SIGHASH_ANYPREVOUT (APO)",
+      "year": "2018",
+      "status": "proposed",
+      "shortInfo": "A signature hash type that does not commit to the specific UTXO being spent, enabling floating transactions.",
+      "bips": ["118"],
+      "authors": ["Christian Decker"],
+      "sections": [
+        {
+          "heading": "Enabling Eltoo",
+          "content": "APO is necessary for the Eltoo (LN-Symmetry) protocol, an alternative to LN-Penalty that allows any later channel state to replace any earlier state without toxic waste."
+        }
+      ]
+    },
+    {
+      "id": "pr-op-cat",
+      "category": "proposed",
+      "label": "OP_CAT",
+      "year": "2023",
+      "status": "proposed",
+      "shortInfo": "Proposal to restore a disabled opcode that concatenates two stack elements.",
+      "sections": [
+        {
+          "heading": "Versatile Scripting",
+          "content": "Originally disabled in 2010 due to memory exhaustion risks, safe variants are now proposed. It can emulate covenants, enable quantum-resistant signatures, and support complex off-chain protocols."
+        }
+      ]
+    },
+    {
+      "id": "pr-package-relay",
+      "category": "proposed",
+      "label": "Package Relay",
+      "year": "2022",
+      "status": "experimental",
+      "shortInfo": "Allows nodes to relay groups of related transactions together, evaluating their combined feerate.",
+      "sections": [
+        {
+          "heading": "Fixing CPFP for 0-fee transactions",
+          "content": "Solves the issue where a parent transaction below the minimum relay fee cannot be broadcast, preventing child-pays-for-parent (CPFP) fee bumping. Critical for LN channel closures."
+        }
+      ]
+    },
+    {
+      "id": "pr-v3-relay",
+      "category": "proposed",
+      "label": "V3 Transaction Relay",
+      "year": "2022",
+      "status": "proposed",
+      "shortInfo": "A modified set of transaction relay policies designed to prevent transaction pinning attacks.",
+      "sections": [
+        {
+          "heading": "Anti-Pinning Policies",
+          "content": "Limits the size and shape of descendant transactions, allowing safe replace-by-fee (RBF) for multi-party protocols without the risk of an attacker making replacement prohibitively expensive."
+        }
+      ]
+    },
+    {
+      "id": "pr-ephemeral-anchors",
+      "category": "proposed",
+      "label": "Ephemeral Anchors",
+      "year": "2022",
+      "status": "proposed",
+      "shortInfo": "Allows 0-fee transactions with dust-value outputs to relay, provided they are spent by a fee-paying child.",
+      "sections": [
+        {
+          "heading": "Fee Sourcing Flexibility",
+          "content": "Relies on Package Relay and V3 Transactions. It eliminates the need for LN nodes to lock up capital in commitment transaction fees, allowing external fee sponsorship at the time of broadcast."
+        }
+      ]
+    },
+    {
+      "id": "pr-ark",
+      "category": "proposed",
+      "label": "Ark Protocol",
+      "year": "2023",
+      "status": "research",
+      "shortInfo": "An off-chain protocol allowing users to share UTXOs and make cheap payments using Virtual UTXOs (VTXOs).",
+      "sections": [
+        {
+          "heading": "Scaling without Channels",
+          "content": "Ark spreads the cost of on-chain fees across multiple participants using trees of pre-signed transactions. It benefits greatly from covenant proposals like CTV."
+        }
+      ]
+    },
+    {
+      "id": "pr-consensus-cleanup",
+      "category": "proposed",
+      "label": "Consensus Cleanup",
+      "year": "2019",
+      "status": "proposed",
+      "shortInfo": "A soft fork to fix legacy bugs: Time warp attack, slow-to-validate blocks, merkle tree weaknesses, and duplicate txids.",
+      "bips": ["54"],
+      "sections": [
+        {
+          "heading": "Technical Debt Reduction",
+          "content": "Addresses early design flaws from 2009, including placing limits on signature operations to prevent DoS attacks, and enforcing timing constraints to eliminate the time warp exploit."
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "genesis",
+      "to": "sf-nlocktime-enforcement",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-nlocktime-enforcement",
+      "to": "sf-p2sh",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-p2sh",
+      "to": "sf-bip30",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-bip30",
+      "to": "sf-bip34",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-bip34",
+      "to": "sf-bip66",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-bip66",
+      "to": "sf-cltv",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-cltv",
+      "to": "sf-csv",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-csv",
+      "to": "sf-segwit",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-segwit",
+      "to": "sf-taproot",
+      "relationship": "timeline"
+    },
+    {
+      "from": "sf-cltv",
+      "to": "bt-lightning",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-csv",
+      "to": "bt-lightning",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-segwit",
+      "to": "bt-lightning",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-taproot",
+      "to": "bt-musig",
+      "relationship": "dependency"
+    },
+    {
+      "from": "sf-taproot",
+      "to": "pr-ctv",
+      "relationship": "proposed-dependency"
+    },
+    {
+      "from": "pr-package-relay",
+      "to": "pr-v3-relay",
+      "relationship": "dependency"
+    },
+    {
+      "from": "pr-v3-relay",
+      "to": "pr-ephemeral-anchors",
+      "relationship": "dependency"
+    },
+    {
+      "from": "pr-ctv",
+      "to": "pr-ark",
+      "relationship": "proposed-dependency"
+    },
+    {
+      "from": "pr-apo",
+      "to": "bt-lightning",
+      "relationship": "proposed-dependency"
+    }
+  ]
+}

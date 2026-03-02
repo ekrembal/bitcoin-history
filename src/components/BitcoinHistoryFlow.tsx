@@ -23,7 +23,8 @@ import { EditToolbar } from "@/components/EditToolbar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "@/lib/useTheme";
 import { useGraphStore } from "@/lib/useGraphStore";
-import { Info, ZoomIn, ZoomOut, Maximize2, X, Pencil, PencilOff } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Info, ZoomIn, ZoomOut, Maximize2, X, Pencil, PencilOff, FileEdit } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -127,6 +128,13 @@ function FlowContent({ sourceIndex, selectedSource, onSourceChange }: BitcoinHis
             )}
           </div>
           <div className="flex items-center gap-1 pointer-events-auto">
+            <Link
+              to="/edit"
+              className="w-7 h-7 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400"
+              title="AI prompt & paste JSON"
+            >
+              <FileEdit className="w-3.5 h-3.5" />
+            </Link>
             <button
               onClick={toggleEditMode}
               className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
