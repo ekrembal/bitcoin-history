@@ -1,1 +1,4 @@
-["gemini-pro.json"]
+[
+  "gemini-pro-with-optech.json",
+  "gemini-pro.json"
+]
