@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "title": "Bitcoin Technical History",
+  "description": "A comprehensive map of Bitcoin's consensus evolution, technical breakthroughs, and future proposals.",
+  "author": "Gemini 3 Flash",
+  "generatedAt": "2026-03-01",
+  "nodes": [
+    {
+      "id": "genesis-whitepaper",
+      "category": "genesis",
+      "label": "Bitcoin Whitepaper",
+      "year": "2008",
+      "date": "2008-10-31",
+      "status": "deployed",
+      "shortInfo": "Satoshi Nakamoto publishes 'Bitcoin: A Peer-to-Peer Electronic Cash System'.",
+      "authors": ["Satoshi Nakamoto"],
+      "sections": [
+        {
+          "heading": "The Triple Entry Result",
+          "content": "Introduced the concept of a Proof-of-Work chain to solve the double-spending problem without a trusted third party."
+        }
+      ]
+    },
+    {
+      "id": "sf-p2sh",
+      "category": "softfork",
+      "label": "P2SH (Pay-to-Script-Hash)",
+      "year": "2012",
+      "date": "2012-04-01",
+      "status": "deployed",
+      "shortInfo": "Simplified the use of complex scripts like multi-signature.",
+      "bips": ["16"],
+      "sections": [
+        {
+          "heading": "Technical Impact",
+          "content": "Moved the responsibility for supplying the conditions to spend an output from the sender to the redeemer."
+        }
+      ]
+    },
+    {
+      "id": "sf-cltv",
+      "category": "softfork",
+      "label": "CLTV (CheckLockTimeVerify)",
+      "year": "2015",
+      "date": "2015-12-15",
+      "status": "deployed",
+      "shortInfo": "Allows outputs to be unspendable until a specific point in the future.",
+      "bips": ["65"],
+      "sections": [
+        {
+          "heading": "Time-locking",
+          "content": "Essential for creating payment channels and atomic swaps by ensuring funds cannot be moved before a timeout."
+        }
+      ]
+    },
+    {
+      "id": "sf-csv",
+      "category": "softfork",
+      "label": "CSV (CheckSequenceVerify)",
+      "year": "2016",
+      "date": "2016-07-04",
+      "status": "deployed",
+      "shortInfo": "Relative timelocks for transaction outputs.",
+      "bips": ["68", "112", "113"],
+      "sections": [
+        {
+          "heading": "Relative Locks",
+          "content": "Enables the clock to start only once a transaction is mined, a prerequisite for the Lightning Network."
+        }
+      ]
+    },
+    {
+      "id": "sf-segwit",
+      "category": "softfork",
+      "label": "Segregated Witness",
+      "year": "2017",
+      "date": "2017-08-24",
+      "status": "deployed",
+      "shortInfo": "Separates witness data, fixes malleability, and increases effective block weight.",
+      "authors": ["Pieter Wuille", "Eric Lombrozo", "Johnson Lau"],
+      "bips": ["141", "143", "144"],
+      "sections": [
+        {
+          "heading": "Malleability Fix",
+          "content": "By moving the signature out of the TXID calculation, it allowed for the secure chaining of unconfirmed transactions."
+        }
+      ]
+    },
+    {
+      "id": "bt-lightning",
+      "category": "breakthrough",
+      "label": "Lightning Network",
+      "year": "2018",
+      "status": "deployed",
+      "shortInfo": "Layer 2 scaling solution for instant, low-fee payments.",
+      "authors": ["Joseph Poon", "Thaddeus Dryja"],
+      "sections": [
+        {
+          "heading": "Off-chain Scaling",
+          "content": "Uses bidirectional payment channels to route payments across a network of nodes without burdening the base layer."
+        }
+      ]
+    },
+    {
+      "id": "sf-taproot",
+      "category": "softfork",
+      "label": "Taproot",
+      "year": "2021",
+      "date": "2021-11-14",
+      "status": "deployed",
+      "shortInfo": "Schnorr signatures, MAST, and enhanced privacy/efficiency for scripts.",
+      "authors": ["Pieter Wuille", "Gregory Maxwell", "Andrew Poelstra"],
+      "bips": ["340", "341", "342"],
+      "sections": [
+        {
+          "heading": "Schnorr Signatures",
+          "content": "Replaced ECDSA with Schnorr, allowing for key and signature aggregation, making complex spends look like standard ones."
+        }
+      ]
+    },
+    {
+      "id": "bt-musig",
+      "category": "breakthrough",
+      "label": "MuSig2",
+      "year": "2022",
+      "status": "experimental",
+      "shortInfo": "Multi-signature scheme that is compatible with Taproot.",
+      "sections": [
+        {
+          "heading": "Aggregation",
+          "content": "Allows multiple signers to produce a single aggregated signature, saving space and improving privacy."
+        }
+      ]
+    },
+    {
+      "id": "pr-ctv",
+      "category": "proposed",
+      "label": "OP_CHECKTEMPLATEVERIFY",
+      "year": "2024",
+      "status": "proposed",
+      "shortInfo": "Covenant proposal for scaling, vaults, and congestion control.",
+      "authors": ["Jeremy Rubin"],
+      "bips": ["119"],
+      "sections": [
+        {
+          "heading": "Covenants",
+          "content": "Enables restricting where funds can be sent in future transactions, facilitating cold storage 'vaults'."
+        }
+      ]
+    },
+    {
+      "id": "pr-greatscript",
+      "category": "proposed",
+      "label": "Great Script / Simplicity",
+      "year": "2025",
+      "status": "research",
+      "shortInfo": "Formal verification and high-level language support for Bitcoin scripts.",
+      "authors": ["Russell O'Connor"],
+      "sections": [
+        {
+          "heading": "Formal Safety",
+          "content": "A typed, combinator-based language designed to make smart contracts easier to analyze and prove correct."
+        }
+      ]
+    },
+    {
+      "id": "bt-miniscript",
+      "category": "breakthrough",
+      "label": "Miniscript",
+      "year": "2019",
+      "status": "deployed",
+      "shortInfo": "A language for writing (a subset of) Bitcoin Script in a structured way.",
+      "authors": ["Pieter Wuille", "Andrew Poelstra"],
+      "sections": [
+        {
+          "heading": "Composability",
+          "content": "Allows different parties to combine their spending conditions without manual script engineering."
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "genesis-whitepaper",
+      "to": "sf-p2sh",
+      "relationship": "timeline"
+    },
+    { "from": "sf-p2sh", "to": "sf-cltv", "relationship": "timeline" },
+    { "from": "sf-cltv", "to": "sf-csv", "relationship": "timeline" },
+    { "from": "sf-csv", "to": "sf-segwit", "relationship": "timeline" },
+    { "from": "sf-segwit", "to": "sf-taproot", "relationship": "timeline" },
+    { "from": "sf-taproot", "to": "pr-ctv", "relationship": "timeline" },
+    { "from": "sf-cltv", "to": "bt-lightning", "relationship": "dependency" },
+    { "from": "sf-csv", "to": "bt-lightning", "relationship": "dependency" },
+    { "from": "sf-segwit", "to": "bt-lightning", "relationship": "dependency" },
+    {
+      "from": "sf-segwit",
+      "to": "bt-miniscript",
+      "relationship": "dependency"
+    },
+    { "from": "sf-taproot", "to": "bt-musig", "relationship": "dependency" },
+    {
+      "from": "sf-taproot",
+      "to": "pr-greatscript",
+      "relationship": "proposed-dependency"
+    },
+    { "from": "bt-miniscript", "to": "sf-taproot", "relationship": "timeline" }
+  ]
+}
