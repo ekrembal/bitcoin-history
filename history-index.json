@@ -1,5 +1,6 @@
 [
   "gemini-fast.json",
   "gemini-pro-with-optech.json",
-  "gemini-pro.json"
+  "gemini-pro.json",
+  "opus-4.6.json"
 ]
